@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<body bgcolor="red">
+<center>
+<h2>Score</h2>
+</center>
+<div class="container-fluid background-gradient-blue">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <div style="margin-top: 12rem; margin-bottom:6rem;" class="col-sm-6 col-md-6 col-lg-6 offset-md-3 offset-lg-3 signin-border  " >
+               <center style="margin-bottom:100px;"> <h1 class = "display-2" style="margin-top: 2rem;" class="text-center quicksand-bold">{{ data }} / {{score}}</h1></center>
+                    {% comment %} <div style="height: 360px;" class="col-10 offset-1 quicksand">
+                    </div> {% endcomment %}
+                <button type="button" class="btn btn-secondary btn-lg btn-block " onclick="window.history.back()">BACK</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+{% endblock %}

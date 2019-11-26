@@ -1,0 +1,45 @@
+ {% extends 'base.html' %}
+ {% block content %}
+ {% if course %}
+ {% comment %} {{ exam.id }} {% endcomment %}
+  <div class="container-fluid">
+  <div class="row">
+    <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+      <div class="sidebar-sticky">
+      <h3 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+          <span>เรื่อง</span>
+          <a class="d-flex align-items-center text-muted" href="#">
+            <span data-feather="plus-circle"></span>
+          </a>
+        </h3>
+        <ul class="nav flex-column">
+          
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'coursedetail' course.id %}">
+              <span data-feather="file"></span>
+              บทเรียน
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'exam' exam.id %}">
+              <span data-feather="shopping-cart"></span>
+              ข้อสอบ
+            </a>
+          </li>
+         
+      </div>
+    </nav>
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">{{course.name}}</h1>
+        
+      </div>
+<div class="media">
+  <div class="media-body">
+      {% autoescape off %}
+      {{course.detail|safe|linebreaks}}
+      {% endautoescape %}
+  </div>
+</div>
+{% endif %}
+{% endblock %}

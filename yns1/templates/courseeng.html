@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+<div class="container-fluid">
+  <div class="row">
+    <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+      <div class="sidebar-sticky">
+      <h3 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+          <span><a href = "{% url 'course' %}">Course</a></span>
+          <a class="d-flex align-items-center text-muted" href="#">
+            <span data-feather="plus-circle"></span>
+          </a>
+        </h3>
+        <ul class="nav flex-column">
+          
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'coursemath' %}">
+              <span data-feather="file"></span>
+              คณิตศาสตร์
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'coursesci' %}">
+              <span data-feather="shopping-cart"></span>
+              วิทยาศาสตร์
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'eng' %}">
+              <span data-feather="users"></span>
+              ภาษาต่างประเทศ
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'thai' %}">
+              <span data-feather="bar-chart-2"></span>
+              ภาษาไทย
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'courseso' %}">
+              <span data-feather="layers"></span>
+              สังคมศึกษา
+            </a>
+          </li>
+        </ul>
+
+       
+      </div>
+    </nav>
+
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Course</h1>
+      </div>
+    <div class="row">
+    
+      {% if data %}
+         {% for detail in data %}
+            {% if detail.Subject.id == 10 %}
+         
+             <div class="col-sm-4"  >
+             <div class="card" >
+             {% if detail.img == blank %}
+             <img style="width:100%;" src="{% static "image/maxresdefault.jpg" %}">
+              {% else %}
+             <img style="width:100%;" src="{{ detail.img }}">
+              {% endif %}
+                <div class="card-body">
+                <h5 class="card-title">{{ detail.name }}</h5>
+                <p class="card-text"></p>
+                <a href="{% url 'coursedetail' detail.id %}" class="btn btn-primary">LEARN MORE</a>
+             </div>
+             </div>
+             </div>
+             {% endif %}
+           {% endfor %}
+      {% endif %}
+      
+    </div>
+
+      {% comment %} <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas> {% endcomment %}
+    </main>
+  </div>
+</div>
+{% endblock %}
